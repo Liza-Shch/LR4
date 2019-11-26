@@ -1,0 +1,27 @@
+{
+  "name": "lr4",
+  "version": "1.0.0",
+  "description": "LR4 по курсу баз данных, 1 курс магистратуры",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Liza-Shch/LR4.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Liza-Shch/LR4/issues"
+  },
+  "homepage": "https://github.com/Liza-Shch/LR4#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg-promise": "^10.3.1"
+  },
+  "devDependencies": {
+    "body-parser": "^1.19.0"
+  }
+}

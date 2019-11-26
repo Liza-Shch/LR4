@@ -1,0 +1,176 @@
+---
+swagger: "2.0"
+info:
+  description: ""
+  version: v1
+  title: lr4
+host: virtserver.swaggerhub.com
+basePath: /Liza-Shch/lr4/v1
+schemes:
+- https
+- http
+paths:
+  /api/post:
+    post:
+      description: Создание нового поста
+      parameters:
+      - in: body
+        name: post
+        required: true
+        schema:
+          $ref: '#/definitions/post_1'
+      responses:
+        "201":
+          description: Successfully created new post
+        "400":
+          description: Wrong parametrs
+    put:
+      description: Изменение существующего поста
+      parameters:
+      - in: body
+        name: post
+        required: true
+        schema:
+          $ref: '#/definitions/post'
+      responses:
+        "200":
+          description: Successfully changed post
+        "400":
+          description: Wrong parametrs
+        "404":
+          description: Post was not found
+  /api/post/id_or_idempotencyKey:
+    get:
+      description: Получение поста по id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: integer
+      - name: idempotencyKey
+        in: path
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Successfully get post
+        "400":
+          description: Wrong parametrs
+        "404":
+          description: Post was not found
+  /api/post/delete:
+    put:
+      description: Удаление поста по id
+      parameters:
+      - in: body
+        name: post
+        required: true
+        schema:
+          $ref: '#/definitions/post_2'
+      responses:
+        "200":
+          description: Successfully delete post
+        "400":
+          description: Wrong parametrs
+        "404":
+          description: Post was not found
+definitions:
+  User:
+    type: object
+    required:
+    - createdAt
+    - id
+    - password
+    - updatedAt
+    - username
+    properties:
+      id:
+        type: integer
+      username:
+        type: string
+      password:
+        type: string
+      createdAt:
+        type: string
+      updatedAt:
+        type: string
+      deletedAt:
+        type: string
+  Blog:
+    type: object
+    required:
+    - createdAt
+    - id
+    - updatedAt
+    properties:
+      id:
+        type: integer
+      createdAt:
+        type: string
+      updatedAt:
+        type: string
+      deletedAt:
+        type: string
+  Post:
+    type: object
+    required:
+    - author
+    - createdAt
+    - id
+    - idempotencyKey
+    - text
+    - title
+    - updatedAt
+    properties:
+      id:
+        type: integer
+      title:
+        type: string
+      text:
+        type: string
+      blog:
+        type: integer
+      author:
+        type: integer
+      idempotencyKey:
+        type: string
+      createdAt:
+        type: string
+      updatedAt:
+        type: string
+      deletedAt:
+        type: string
+  post:
+    type: object
+    properties:
+      id:
+        type: integer
+      title:
+        type: string
+      text:
+        type: string
+      img:
+        type: string
+  post_1:
+    type: object
+    properties:
+      title:
+        type: string
+      text:
+        type: string
+      author:
+        type: string
+        description: id user
+      blog:
+        type: string
+        description: id blog
+      img:
+        type: string
+        description: url картинки, не обязателен
+      idempotencyKey:
+        type: string
+        description: Ключ идемпотентности
+  post_2:
+    properties:
+      id:
+        type: integer
